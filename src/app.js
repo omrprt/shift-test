@@ -1,6 +1,6 @@
 import React    from 'react';
 import ReactDom from 'react-dom';
-import { VictoryPie, VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryPie, VictoryBar, VictoryChart, VictoryAxis, VictoryLegend } from 'victory';
 
 import 'bootstrap-css-only';
 import './scss/style.scss';
@@ -128,9 +128,9 @@ class App extends React.Component {
 
                 }}
                 data= {[
-                  { x: 1, y: this.hours1to4, width: 4 },
-                  { x: 2, y: this.hours5to8, width: 6 },
-                  { x: 3, y: this.hours9to12, width: 8 }
+                  { x: 1, y: this.hours1to4, width: 16 },
+                  { x: 2, y: this.hours5to8, width: 16 },
+                  { x: 3, y: this.hours9to12, width: 16 }
                 ]}
               />
             </VictoryChart>
