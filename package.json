@@ -5,7 +5,9 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn webpack-dev-server"
+    "start:dev": "yarn webpack-dev-server",
+    "start": "yarn build && node index",
+    "build": "webpack -p"
   },
   "dependencies": {
     "bootstrap-css-only": "^3.3.7",
