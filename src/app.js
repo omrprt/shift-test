@@ -1,6 +1,6 @@
 import React    from 'react';
 import ReactDom from 'react-dom';
-import { VictoryPie, VictoryBar, VictoryChart, VictoryAxis, VictoryLegend } from 'victory';
+import { VictoryPie, VictoryBar, VictoryChart, VictoryLegend } from 'victory';
 
 import 'bootstrap-css-only';
 import './scss/style.scss';
@@ -76,8 +76,10 @@ class App extends React.Component {
 
   render(){
 
+
     return (
       <div className="container">
+
         <div className="Row">
 
           <h1>Messly Shifts</h1>
@@ -106,22 +108,17 @@ class App extends React.Component {
         <div className="Row">
           <div className="col-md-6">
             <h3>Bar Chart by Hours</h3>
-            <VictoryChart domainPadding={20}>
-              <VictoryAxis
-                tickValues={[1, 2, 3]}
-                tickFormat={['1-4 Hours', '5-8 Hours', '9-12 Hours']}
-              />
-              <VictoryAxis
-                dependentAxis
+            <VictoryChart
 
-                tickFormat={(x) => (`${x}`)}
-              />
+              domainPadding={50}>
+
               <VictoryBar
-                cornerRadius={10}
+                labels={(d) => `${d.y}`}
+                categories={{ x: ['1-4 Hours', '5-8 Hours', '9-12 Hours'] }}
                 style={{
                   data: {
                     fill: 'black',
-                    width: 25
+                    width: 30
                   }
 
                 }}
@@ -132,18 +129,37 @@ class App extends React.Component {
                 ]}
               />
             </VictoryChart>
+
           </div>
           <div className="col-md-6">
             <h3>Pie Chart by Shift Status</h3>
 
-            <VictoryPie
+            <svg width={315} height={100} >
+               <VictoryLegend standalone={false}
+                 orientation="horizontal"
+                 x={20} y={20}
 
+                 title="Legend"
+                 centerTitle
+                 style={{ border: { stroke: "black" } }}
+                 colorScale={['black', 'grey', '#D5E0EA']}
+                 data={[
+                   { name: 'Unfilled' }, { name: 'Confirmed' }, { name: 'Cancelled' }
+                 ]}
+               />
+
+             </svg>
+
+
+            <VictoryPie
+              colorScale={['black', 'grey', '#D5E0EA']}
               data={[
-                { x: 1, y: this.unfilled, label: 'Unfilled' },
-                { x: 2, y: this.confirmed, label: 'confirmed' },
-                { x: 3, y: this.cancelled, label: 'cancelled' }
-              ]}
+                { x: null, y: this.unfilled, label: null  },
+                { x: null, y: this.confirmed, label: null },
+                { x: null, y: this.cancelled, label: null  }
+             ]}
             />
+
           </div>
         </div>
 
