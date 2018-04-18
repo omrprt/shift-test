@@ -69,7 +69,7 @@ class App extends React.Component {
 
   startTimer() {
     if (this.timer === 0) {
-      this.timer = setInterval(this.makeDummyShift, 50
+      this.timer = setInterval(this.makeDummyShift, 1000
       );
     }
   }
