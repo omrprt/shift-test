@@ -1,5 +1,6 @@
 import React    from 'react';
 import ReactDom from 'react-dom';
+import { VictoryPie } from 'victory';
 
 import 'bootstrap-css-only';
 import './scss/style.scss';
@@ -87,7 +88,13 @@ class App extends React.Component {
             bar chart
           </div>
           <div className="col-md-6">
-            <PieChart data={chartData} options={chartOptions}/>
+            <VictoryPie
+              data={[
+                { x: 1, y: this.unfilled, label: 'Unfilled' },
+                { x: 2, y: this.confirmed, label: 'confirmed' },
+                { x: 3, y: this.cancelled, label: 'cancelled' }
+              ]}
+            />
           </div>
         </div>
         {this.state.hours }
