@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "yarn webpack-dev-server",
-    "start": "yarn build && node index",
+    "start": "yarn build && node server",
     "build": "webpack -p"
   },
   "dependencies": {
