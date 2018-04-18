@@ -1,6 +1,6 @@
 import React    from 'react';
 import ReactDom from 'react-dom';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryBar, VictoryChart, VictoryAxis } from 'victory';
 
 import 'bootstrap-css-only';
 import './scss/style.scss';
@@ -18,6 +18,9 @@ class App extends React.Component {
     this.confirmed = 0;
     this.cancelled = 0;
     this.unfilled = 0;
+    this.hours1to4 = 0;
+    this.hours5to8 = 0;
+    this.hours9to12 = 0;
   }
 
   makeDummyShift() {
@@ -27,6 +30,14 @@ class App extends React.Component {
 
     const p = (Math.random() + .01).toFixed(2);
     console.log(newHours, p);
+
+    if (newHours > 8 ){
+      this.hours9to12 ++;
+    } else if (newHours > 4 && newHours <=8 ) {
+      this.hours5to8 ++;
+    } else {
+      this.hours1to4 ++;
+    }
 
     if ((newHours > 6 && p <= .01) || (newHours <= 6 && p > .01 && p <= .03 )) {
       status = 'CANCELLED';
@@ -38,6 +49,7 @@ class App extends React.Component {
       status = 'UNFILLED',
       this.unfilled ++;
     }
+
     if (seconds === 0) {
       clearInterval(this.timer);
     }
@@ -57,7 +69,7 @@ class App extends React.Component {
 
   startTimer() {
     if (this.timer === 0) {
-      this.timer = setInterval(this.makeDummyShift, 1000
+      this.timer = setInterval(this.makeDummyShift, 50
       );
     }
   }
@@ -68,7 +80,17 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <h1>Messly Shifts</h1>
+        <div className="Row">
+
+          <h1>Messly Shifts</h1>
+
+          <button className="startButton" onClick={this.startTimer}>
+            CLICK HERE TO START APP
+          </button>
+
+
+        </div>
+
         <div className="Row">
           <div className="col-md-3 col-xs-6">
             <p>unfilled shifts = { this.unfilled }</p>
@@ -85,9 +107,36 @@ class App extends React.Component {
         </div>
         <div className="Row">
           <div className="col-md-6">
-            bar chart
+            <h3>Bar Chart by Hours</h3>
+            <VictoryChart domainPadding={20}>
+              <VictoryAxis
+                tickValues={[1, 2, 3]}
+                tickFormat={['1-4 Hours', '5-8 Hours', '9-12 Hours']}
+              />
+              <VictoryAxis
+                dependentAxis
+
+                tickFormat={(x) => (`${x}`)}
+              />
+              <VictoryBar
+                cornerRadius={10}
+                style={{
+                  data: {
+                    fill: 'black',
+                    width: 25
+                  }
+
+                }}
+                data= {[
+                  { x: 1, y: this.hours1to4, width: 4 },
+                  { x: 2, y: this.hours5to8, width: 6 },
+                  { x: 3, y: this.hours9to12, width: 8 }
+                ]}
+              />
+            </VictoryChart>
           </div>
           <div className="col-md-6">
+            <h3>Pie Chart by Shift Status</h3>
             <VictoryPie
               data={[
                 { x: 1, y: this.unfilled, label: 'Unfilled' },
@@ -97,19 +146,13 @@ class App extends React.Component {
             />
           </div>
         </div>
-        {this.state.hours }
-        <div>
-          <button className="button" onClick={this.startTimer}>
-          click
-          </button>
-        </div>
-        {this.seconds}
 
-        <ul>
+
+        {/* <ul>
           { this.state.shifts.map((shift, i) =>
             <li key={i}>{ shift.shift.hours }</li>
           )}
-        </ul>
+        </ul> */}
       </div>
     );
   }
