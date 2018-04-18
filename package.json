@@ -1,7 +1,7 @@
 {
   "name": "react-webpack-setup",
   "version": "1.0.0",
-  "description": "A React and Webpack setup for WDI",
+  "description": "Shift Test",
   "main": "server.js",
   "license": "MIT",
   "scripts": {

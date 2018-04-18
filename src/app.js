@@ -147,7 +147,6 @@ class App extends React.Component {
           </div>
         </div>
 
-
         {/* <ul>
           { this.state.shifts.map((shift, i) =>
             <li key={i}>{ shift.shift.hours }</li>
