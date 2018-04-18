@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/omrprt/.nvm/versions/node/v9.5.0/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js install
+  /Users/omrprt/.nvm/versions/node/v9.5.0/bin/node /usr/local/Cellar/yarn/1.5.1/libexec/bin/yarn.js add react-chartjs
 
 PATH: 
   /Users/omrprt/.rbenv/shims:/Users/omrprt/.nvm/versions/node/v9.5.0/bin:/Users/omrprt/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin

@@ -20,7 +20,6 @@ class App extends React.Component {
   }
 
   makeDummyShift() {
-
     const seconds = this.seconds --;
     const newHours = Math.floor(Math.random() * 12 + 1);
     let status = 'UNFILLED';
@@ -64,6 +63,8 @@ class App extends React.Component {
 
   render(){
 
+    console.log(this.state);
+
     return (
       <div className="container">
         <h1>Messly Shifts</h1>
@@ -96,6 +97,12 @@ class App extends React.Component {
           </button>
         </div>
         {this.seconds}
+
+        <ul>
+          { this.state.shifts.map((shift, i) =>
+            <li key={i}>{ shift.shift.hours }</li>
+          )}
+        </ul>
       </div>
     );
   }

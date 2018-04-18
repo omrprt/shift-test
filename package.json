@@ -4,15 +4,14 @@
   "description": "A React and Webpack setup for WDI",
   "main": "server.js",
   "license": "MIT",
-  "engines": {
-    "node": "9.2.0"
-  },
   "scripts": {
     "start": "yarn webpack-dev-server"
   },
   "dependencies": {
     "bootstrap-css-only": "^3.3.7",
+    "chart.js": "^1.1.1",
     "react": "^15.6.1",
+    "react-chartjs": "^1.2.0",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
