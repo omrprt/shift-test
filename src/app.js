@@ -29,7 +29,7 @@ class App extends React.Component {
     let status = 'UNFILLED';
 
     const p = (Math.random() + .01).toFixed(2);
-    console.log(newHours, p);
+    console.log(newHours, p, status);
 
     if (newHours > 8 ){
       this.hours9to12 ++;
