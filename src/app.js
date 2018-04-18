@@ -14,6 +14,9 @@ class App extends React.Component {
     this.startTimer = this.startTimer.bind(this);
     this.seconds = 999;
     this.timer = 0;
+    this.confirmed = 0;
+    this.cancelled = 0;
+    this.unfilled = 0;
   }
 
   makeDummyShift() {
@@ -27,10 +30,13 @@ class App extends React.Component {
 
     if ((newHours > 6 && p <= .01) || (newHours <= 6 && p > .01 && p <= .03 )) {
       status = 'CANCELLED';
+      this.cancelled ++;
     } else if ((newHours > 6 && p <= .03) || (newHours <= 6 && p <= .01)) {
       status = 'CONFIRMED';
+      this.confirmed ++;
     } else {
-      status = 'UNFILLED';
+      status = 'UNFILLED',
+      this.unfilled ++;
     }
     if (seconds === 0) {
       clearInterval(this.timer);
@@ -63,16 +69,16 @@ class App extends React.Component {
         <h1>Messly Shifts</h1>
         <div className="Row">
           <div className="col-md-3 col-xs-6">
-            <p>unfilled shifts</p>
+            <p>unfilled shifts = { this.unfilled }</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p> confirmed shifts</p>
+            <p> confirmed shifts = { this.confirmed }</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p>cancelled shifts</p>
+            <p>cancelled shifts = { this.cancelled }</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p>confirmed or unfilled shifts</p>
+            <p>confirmed or unfilled shifts = { this.confirmed + this.unfilled }</p>
           </div>
         </div>
         <div className="Row">
@@ -83,12 +89,13 @@ class App extends React.Component {
             pie chart
           </div>
         </div>
-      
+        {this.state.hours }
         <div>
           <button className="button" onClick={this.startTimer}>
           click
           </button>
         </div>
+        {this.seconds}
       </div>
     );
   }
