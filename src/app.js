@@ -87,7 +87,7 @@ class App extends React.Component {
             bar chart
           </div>
           <div className="col-md-6">
-            pie chart
+            <PieChart data={chartData} options={chartOptions}/>
           </div>
         </div>
         {this.state.hours }
