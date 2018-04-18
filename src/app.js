@@ -137,7 +137,9 @@ class App extends React.Component {
           </div>
           <div className="col-md-6">
             <h3>Pie Chart by Shift Status</h3>
+
             <VictoryPie
+
               data={[
                 { x: 1, y: this.unfilled, label: 'Unfilled' },
                 { x: 2, y: this.confirmed, label: 'confirmed' },
