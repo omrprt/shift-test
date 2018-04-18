@@ -93,16 +93,16 @@ class App extends React.Component {
 
         <div className="Row">
           <div className="col-md-3 col-xs-6">
-            <p>unfilled shifts = { this.unfilled }</p>
+            <p>{ this.unfilled } unfilled shifts</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p> confirmed shifts = { this.confirmed }</p>
+            <p>{ this.confirmed } confirmed shifts</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p>cancelled shifts = { this.cancelled }</p>
+            <p>{ this.cancelled } cancelled shifts</p>
           </div>
           <div className="col-md-3 col-xs-6">
-            <p>confirmed or unfilled shifts = { this.confirmed + this.unfilled }</p>
+            <p>{ this.confirmed + this.unfilled } confirmed or unfilled shifts</p>
           </div>
         </div>
         <div className="Row">
@@ -135,20 +135,20 @@ class App extends React.Component {
             <h3>Pie Chart by Shift Status</h3>
 
             <svg width={315} height={100} >
-               <VictoryLegend standalone={false}
-                 orientation="horizontal"
-                 x={20} y={20}
+              <VictoryLegend standalone={false}
+                orientation="horizontal"
+                x={20} y={20}
 
-                 title="Legend"
-                 centerTitle
-                 style={{ border: { stroke: "black" } }}
-                 colorScale={['black', 'grey', '#D5E0EA']}
-                 data={[
-                   { name: 'Unfilled' }, { name: 'Confirmed' }, { name: 'Cancelled' }
-                 ]}
-               />
+                title="Legend"
+                centerTitle
+                style={{ border: { stroke: 'black' } }}
+                colorScale={['black', 'grey', '#D5E0EA']}
+                data={[
+                  { name: 'Unfilled' }, { name: 'Confirmed' }, { name: 'Cancelled' }
+                ]}
+              />
 
-             </svg>
+            </svg>
 
 
             <VictoryPie
@@ -157,7 +157,7 @@ class App extends React.Component {
                 { x: null, y: this.unfilled, label: null  },
                 { x: null, y: this.confirmed, label: null },
                 { x: null, y: this.cancelled, label: null  }
-             ]}
+              ]}
             />
 
           </div>
